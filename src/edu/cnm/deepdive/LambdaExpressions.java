@@ -43,7 +43,8 @@ class CheckCanJump implements CheckAnimal {
   }
 }
 
-interface AnotherCheck {
+interface AnotherCheck {//interfaces with one method are called functional interfaces. Because they
+  //can be used in functional programming like lambdas.
 
   boolean check(Animal first, Animal second);
 }
@@ -75,6 +76,17 @@ public class LambdaExpressions {
     Animal dog = animals.get(2);
 
     print(fish, rabbit, (first, second) -> first.canJump() && second.canSwim());
+
+    List<String> names = new ArrayList<>();
+    names.add("John");
+    names.add("Anthony");
+    names.add("Jimmy");
+    names.add("Timmy");
+
+    System.out.println("names = " + names);
+
+    names.removeIf(name -> name.charAt(0) == 'J');
+    System.out.println("After filter names = " + names);
   }
 
   private static void print(Animal first, Animal second, AnotherCheck check) {
@@ -93,5 +105,17 @@ public class LambdaExpressions {
     }
     System.out.println();
   }
+//  instead of the CheckAnimal interface we can also work with the built in Predicate (line 99
+//  and test (line 102). Whatever type you use in the diamond of Predicate will be accepted in the
+//  test method.
+
+//  private static void print(List<Animal> animals, Predicate<Animal> filter) {
+//    for (Animal animal : animals) {
+//      if (filter.test(animal)) {
+//        System.out.println(animal.getType());
+//      }
+//    }
+//    System.out.println();
+//  }
 
 }
